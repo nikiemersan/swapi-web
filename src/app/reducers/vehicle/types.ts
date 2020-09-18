@@ -7,22 +7,22 @@ export const AT = keyMirror({
 });
 
 export interface Vehicle {
-  cargoCapacity: string;
+  cargo_capacity: string;
   consumables: string;
-  costInCredits: string;
+  cost_in_credits: string;
   created: string;
   crew: string;
   edited: string;
   length: string;
   manufacturer: string;
-  maxAtmospheringSpeed: string;
+  max_atmosphering_speed: string;
   model: string;
   name: string;
   passengers: string;
   pilots: string[];
   films: string[];
   url: string;
-  vehicleClass: string;
+  vehicle_class: string;
 }
 
 export type VehicleState = Vehicle[];

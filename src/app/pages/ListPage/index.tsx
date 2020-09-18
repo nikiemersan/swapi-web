@@ -84,7 +84,7 @@ const actionByCategory: ActionByCategoryTypes = {
       vehicleAction.receiveVehicles(
         vehicles as ListVehicles
       ) as ReduxPromiseAction<ListVehicles>,
-    get: vehicleSelector.getVehicle,
+    get: vehicleSelector.getVehicles,
   },
 };
 
