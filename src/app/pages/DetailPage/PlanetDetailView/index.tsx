@@ -36,7 +36,7 @@ const PlanetDetailView = (props: Props) => {
   return (
     planet && (
       <>
-        <h1>{`Film #${index + 1}`}</h1>
+        <h1>{`Planet #${index + 1}`}</h1>
 
         <h3>Name</h3>
         <p>{planet.name}</p>
@@ -44,15 +44,15 @@ const PlanetDetailView = (props: Props) => {
         <p>{planet.diameter}</p>
         <h3>Rotation Period</h3>
         <p>{planet.rotation_period}</p>
-        <p>Orbital Period</p>
+        <h3>Orbital Period</h3>
         <p>{planet.orbital_period}</p>
-        <p>Gravity</p>
+        <h3>Gravity</h3>
         <p>{planet.gravity}</p>
-        <p>Population</p>
+        <h3>Population</h3>
         <p>{planet.population}</p>
-        <p>Climate</p>
+        <h3>Climate</h3>
         <p>{planet.climate}</p>
-        <p>Terrain</p>
+        <h3>Terrain</h3>
         <p>{planet.terrain}</p>
         {shouldShowPreviousButton && (
           <button onClick={onPreviousButtonClick}>Previous</button>
