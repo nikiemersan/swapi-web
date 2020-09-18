@@ -8,22 +8,22 @@ export const AT = keyMirror({
 
 export interface Starship {
   MGLT: string;
-  cargoCapacity: string;
+  cargo_capacity: string;
   consumables: string;
-  costInCredits: string;
+  cost_in_credits: string;
   created: string;
   crew: string;
   edited: string;
-  hyperdriveRating: string;
+  hyperdrive_rating: string;
   length: string;
   manufacturer: string;
-  maxAtmospheringSpeed: string;
+  max_atmosphering_speed: string;
   model: string;
   name: string;
   passengers: string;
   films: string[];
   pilots: string[];
-  starshipClass: string;
+  starship_class: string;
   url: string;
 }
 
