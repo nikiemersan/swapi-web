@@ -4,6 +4,7 @@ import { ListItems, ReduxPromiseAction } from "../../types";
 export const AT = keyMirror({
   REQUEST_SPECIES: null,
   RECEIVE_SPECIES: null,
+  REQUEST_SPECIES_SUCCESS: null,
 });
 
 export interface Species {
@@ -24,7 +25,11 @@ export interface Species {
   url: string;
 }
 
-export type SpeciesState = Species[];
+export interface SpeciesState {
+  isLoaded: Boolean;
+  isLoading: Boolean;
+  items: Species[];
+}
 
 export type ListSpecies = ListItems<Species>;
 
@@ -37,4 +42,12 @@ export interface ReceiveSpeciesAction extends ReduxPromiseAction<ListSpecies> {
   result: ListSpecies;
 }
 
-export type SpeciesAction = RequestSpeciesAction | ReceiveSpeciesAction;
+export interface RequestSpeciesSuccessAction
+  extends ReduxPromiseAction<ListSpecies> {
+  type: typeof AT.REQUEST_SPECIES_SUCCESS;
+}
+
+export type SpeciesAction =
+  | RequestSpeciesAction
+  | ReceiveSpeciesAction
+  | RequestSpeciesSuccessAction;

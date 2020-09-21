@@ -3,6 +3,7 @@ import {
   ListVehicles,
   ReceiveVehiclesAction,
   RequestVehiclesAction,
+  RequestVehiclesSuccessAction,
 } from "./types";
 
 export const requestVehicles = (): RequestVehiclesAction => {
@@ -17,5 +18,11 @@ export const receiveVehicles = (
   return {
     type: AT.RECEIVE_VEHICLES,
     result: vehicles,
+  };
+};
+
+export const requestVehiclesSuccess = (): RequestVehiclesSuccessAction => {
+  return {
+    type: AT.REQUEST_VEHICLES_SUCCESS,
   };
 };

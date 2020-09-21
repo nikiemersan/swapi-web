@@ -1,8 +1,5 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
 import { useParams } from "react-router-dom";
-
-import DarthVaderImage from "../../assets/darth-vader.png";
 
 import {
   CONST_FILMS,
@@ -28,7 +25,6 @@ interface DetailParamTypes {
 const DetailPage = (): JSX.Element => {
   const { category, index } = useParams<DetailParamTypes>();
   const indexNumber: number = parseInt(index, 10);
-  console.log("ListPage -> category", category, index);
 
   const getDataDetailView = (): JSX.Element => {
     switch (category) {
@@ -49,12 +45,7 @@ const DetailPage = (): JSX.Element => {
     }
   };
 
-  return (
-    <div style={{ padding: 32, textAlign: "center" }}>
-      <img src={DarthVaderImage} style={{ height: 160, width: 160 }} />
-      {getDataDetailView()}
-    </div>
-  );
+  return getDataDetailView();
 };
 
 export default DetailPage;

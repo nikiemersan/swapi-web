@@ -9,25 +9,33 @@ import { getFromSwapi } from "../../api";
 import { categoryAction, categorySelector } from "../../reducers/category";
 
 import { Category } from "../../reducers/category/types";
+import LoadingPage from "../LoadingPage";
 
 const HomePage = () => {
   const dispatch = useDispatch();
+
+  const isLoaded = useSelector(categorySelector.isCategoryLoaded);
+  const isLoading = useSelector(categorySelector.isCategoryLoading);
   const categories = useSelector(categorySelector.getCategories);
-  console.log("HomePage -> categories", categories);
 
   useEffect(() => {
     const getCategoriesFromSwapi = async () => {
       dispatch(categoryAction.requestCategories());
       const res = await getFromSwapi();
       dispatch(categoryAction.receiveCategories(res as Category));
+      dispatch(categoryAction.requestCategoriesSuccess());
     };
 
-    if (categories.length === 0) getCategoriesFromSwapi();
+    if (!isLoaded && !isLoading) {
+      getCategoriesFromSwapi();
+    }
   }, []);
 
-  return (
+  return isLoading ? (
+    <LoadingPage />
+  ) : (
     <div style={{ padding: 32, textAlign: "center" }}>
-      <img src={DarthVaderImage} style={{ height: 160, width: 160 }} />
+      <img src={DarthVaderImage} alt={""} style={{ height: 160, width: 160 }} />
       <h1>Starwars Website</h1>
       {categories.map((category) => (
         <div

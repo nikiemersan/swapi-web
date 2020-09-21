@@ -3,6 +3,7 @@ import {
   Category,
   ReceiveCategoriesAction,
   RequestCategoriesAction,
+  RequestCategoriesSuccessAction,
 } from "./types";
 
 export const requestCategories = (): RequestCategoriesAction => {
@@ -17,5 +18,11 @@ export const receiveCategories = (
   return {
     type: AT.RECEIVE_CATEGORIES,
     result: category,
+  };
+};
+
+export const requestCategoriesSuccess = (): RequestCategoriesSuccessAction => {
+  return {
+    type: AT.REQUEST_CATEGORIES_SUCCESS,
   };
 };

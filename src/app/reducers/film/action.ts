@@ -1,4 +1,10 @@
-import { AT, ListFilms, ReceiveFilmsAction, RequestFilmsAction } from "./types";
+import {
+  AT,
+  ListFilms,
+  ReceiveFilmsAction,
+  RequestFilmsAction,
+  RequestFilmsSuccessAction,
+} from "./types";
 
 export const requestFilms = (): RequestFilmsAction => {
   return {
@@ -10,5 +16,11 @@ export const receiveFilms = (films: ListFilms): ReceiveFilmsAction => {
   return {
     type: AT.RECEIVE_FILMS,
     result: films,
+  };
+};
+
+export const requestFilmsSuccess = (): RequestFilmsSuccessAction => {
+  return {
+    type: AT.REQUEST_FILMS_SUCCESS,
   };
 };

@@ -4,6 +4,7 @@ import { ListItems, ReduxPromiseAction } from "../../types";
 export const AT = keyMirror({
   REQUEST_STARSHIPS: null,
   RECEIVE_STARSHIPS: null,
+  REQUEST_STARSHIPS_SUCCESS: null,
 });
 
 export interface Starship {
@@ -27,7 +28,11 @@ export interface Starship {
   url: string;
 }
 
-export type StarshipState = Starship[];
+export interface StarshipState {
+  isLoaded: Boolean;
+  isLoading: Boolean;
+  items: Starship[];
+}
 
 export type ListStarships = ListItems<Starship>;
 
@@ -42,4 +47,12 @@ export interface ReceiveStarshipsAction
   result: ListStarships;
 }
 
-export type StarshipAction = RequestStarshipsAction | ReceiveStarshipsAction;
+export interface RequestStarshipsSuccessAction
+  extends ReduxPromiseAction<ListStarships> {
+  type: typeof AT.REQUEST_STARSHIPS_SUCCESS;
+}
+
+export type StarshipAction =
+  | RequestStarshipsAction
+  | ReceiveStarshipsAction
+  | RequestStarshipsSuccessAction;

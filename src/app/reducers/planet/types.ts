@@ -4,6 +4,7 @@ import { ListItems, ReduxPromiseAction } from "../../types";
 export const AT = keyMirror({
   REQUEST_PLANETS: null,
   RECEIVE_PLANETS: null,
+  REQUEST_PLANETS_SUCCESS: null,
 });
 
 export interface Planet {
@@ -23,7 +24,11 @@ export interface Planet {
   url: string;
 }
 
-export type PlanetState = Planet[];
+export interface PlanetState {
+  isLoaded: Boolean;
+  isLoading: Boolean;
+  items: Planet[];
+}
 
 export type ListPlanets = ListItems<Planet>;
 
@@ -36,4 +41,12 @@ export interface ReceivePlanetsAction extends ReduxPromiseAction<ListPlanets> {
   result: ListPlanets;
 }
 
-export type PlanetAction = RequestPlanetsAction | ReceivePlanetsAction;
+export interface RequestPlanetsSuccessAction
+  extends ReduxPromiseAction<ListPlanets> {
+  type: typeof AT.REQUEST_PLANETS_SUCCESS;
+}
+
+export type PlanetAction =
+  | RequestPlanetsAction
+  | ReceivePlanetsAction
+  | RequestPlanetsSuccessAction;

@@ -8,7 +8,6 @@ export const getFromSwapi = async (path: string = ""): Promise<ApiResponse> => {
 
   try {
     result = await fetch(url);
-    console.log("result", result);
   } catch (err) {
     console.log("[Error] getFromSwapi ->", err);
   }

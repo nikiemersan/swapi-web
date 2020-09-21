@@ -4,6 +4,7 @@ import { ListItems, ReduxPromiseAction } from "../../types";
 export const AT = keyMirror({
   REQUEST_PEOPLE: null,
   RECEIVE_PEOPLE: null,
+  REQUEST_PEOPLE_SUCCESS: null,
 });
 
 export interface People {
@@ -25,7 +26,11 @@ export interface People {
   vehicles: string[];
 }
 
-export type PeopleState = People[];
+export interface PeopleState {
+  isLoaded: Boolean;
+  isLoading: Boolean;
+  items: People[];
+}
 
 export type ListPeople = ListItems<People>;
 
@@ -38,4 +43,12 @@ export interface ReceivePeopleAction extends ReduxPromiseAction<ListPeople> {
   result: ListPeople;
 }
 
-export type PeopleAction = RequestPeopleAction | ReceivePeopleAction;
+export interface RequestPeopleSuccessAction
+  extends ReduxPromiseAction<ListPeople> {
+  type: typeof AT.REQUEST_PEOPLE_SUCCESS;
+}
+
+export type PeopleAction =
+  | RequestPeopleAction
+  | ReceivePeopleAction
+  | RequestPeopleSuccessAction;

@@ -4,6 +4,7 @@ import { ListItems, ReduxPromiseAction } from "../../types";
 export const AT = keyMirror({
   REQUEST_FILMS: null,
   RECEIVE_FILMS: null,
+  REQUEST_FILMS_SUCCESS: null,
 });
 
 export interface Film {
@@ -23,7 +24,11 @@ export interface Film {
   vehicles: string;
 }
 
-export type FilmState = Film[];
+export interface FilmState {
+  isLoaded: Boolean;
+  isLoading: Boolean;
+  items: Film[];
+}
 
 export type ListFilms = ListItems<Film>;
 
@@ -36,4 +41,12 @@ export interface ReceiveFilmsAction extends ReduxPromiseAction<ListFilms> {
   result: ListFilms;
 }
 
-export type FilmAction = RequestFilmsAction | ReceiveFilmsAction;
+export interface RequestFilmsSuccessAction
+  extends ReduxPromiseAction<ListFilms> {
+  type: typeof AT.REQUEST_FILMS_SUCCESS;
+}
+
+export type FilmAction =
+  | RequestFilmsAction
+  | ReceiveFilmsAction
+  | RequestFilmsSuccessAction;

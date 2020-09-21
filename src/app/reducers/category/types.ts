@@ -4,6 +4,7 @@ import { ReduxPromiseAction } from "../../types";
 export const AT = keyMirror({
   REQUEST_CATEGORIES: null,
   RECEIVE_CATEGORIES: null,
+  REQUEST_CATEGORIES_SUCCESS: null,
 });
 
 export interface Category {
@@ -15,7 +16,11 @@ export interface Category {
   vehicles: string;
 }
 
-export type CategoryState = string[];
+export interface CategoryState {
+  isLoaded: Boolean;
+  isLoading: Boolean;
+  items: string[];
+}
 
 export interface RequestCategoriesAction extends ReduxPromiseAction<Category> {
   type: typeof AT.REQUEST_CATEGORIES;
@@ -25,4 +30,12 @@ export interface ReceiveCategoriesAction extends ReduxPromiseAction<Category> {
   type: typeof AT.RECEIVE_CATEGORIES;
 }
 
-export type CategoryAction = RequestCategoriesAction | ReceiveCategoriesAction;
+export interface RequestCategoriesSuccessAction
+  extends ReduxPromiseAction<Category> {
+  type: typeof AT.REQUEST_CATEGORIES_SUCCESS;
+}
+
+export type CategoryAction =
+  | RequestCategoriesAction
+  | ReceiveCategoriesAction
+  | RequestCategoriesSuccessAction;

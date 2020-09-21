@@ -1,9 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import DetailPage from "../pages/DetailPage";
-import HomePage from "../pages/HomePage";
-import ListPage from "../pages/ListPage";
+import DetailPage from "../pages/DetailPage/Loadable";
+import HomePage from "../pages/HomePage/Loadable";
+import ListPage from "../pages/ListPage/Loadable";
 
 const Routes = () => {
   return (
