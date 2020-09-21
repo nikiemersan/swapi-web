@@ -54,8 +54,6 @@ const ListPage = () => {
   }, []);
 
   const renderSomeDataByCategory = (): JSX.Element => {
-    console.log("ListPage -> dataByCategory", dataByCategory);
-
     var index;
     const dataElements: JSX.Element[] = [];
     for (
