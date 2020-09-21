@@ -49,8 +49,8 @@ export const actionByCategory: ActionByCategoryTypes = {
     get: peopleSelector.getPeople,
   },
   [CONST_PLANETS]: {
-    isLoaded: peopleSelector.isPeopleLoaded,
-    isLoading: peopleSelector.isPeopleLoading,
+    isLoaded: planetSelector.isPlanetLoaded,
+    isLoading: planetSelector.isPlanetLoading,
     request: planetAction.requestPlanets,
     receive: (planet) =>
       planetAction.receivePlanets(planet as ListPlanets) as ReduxPromiseAction<
