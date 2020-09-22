@@ -43,7 +43,6 @@ const PlanetDetailView = (props: Props) => {
       while (shouldRequestData) {
         res = await getFromSwapi(`${CONST_PLANETS}/${queryString}`);
         dispatch(planetAction.receivePlanets(res as ListPlanets));
-        console.log("TES");
         if ("next" in res && res.next) {
           queryString = res.next.substring(res.next.indexOf("?"));
         } else {
